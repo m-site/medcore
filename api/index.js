@@ -7,9 +7,16 @@ import { getAuth } from 'firebase-admin/auth';
 import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 
 const adminEmail = (process.env.ADMIN_EMAIL || 'ma7moud01030382018@gmail.com').toLowerCase();
-const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_JSON ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON) : null;
-if (!getApps().length) initializeApp(serviceAccount ? { credential: cert(serviceAccount) } : undefined);
-const store = getFirestore();
+let store;
+let firebaseInitError;
+try {
+  const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_JSON ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON) : null;
+  if (!getApps().length) initializeApp(serviceAccount ? { credential: cert(serviceAccount) } : undefined);
+  store = getFirestore();
+} catch (error) {
+  firebaseInitError = error;
+  console.error('Firebase initialization failed:', error.message);
+}
 const app = express();
 app.disable('x-powered-by');
 app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
