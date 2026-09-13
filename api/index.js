@@ -21,7 +21,14 @@ const app = express();
 app.disable('x-powered-by');
 app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
 app.use(express.json({ limit: '100kb' }));
-app.use(rateLimit({ windowMs: 15 * 60_000, limit: 240, standardHeaders: true, legacyHeaders: false }));
+app.set('trust proxy', 1);
+app.use(rateLimit({
+  windowMs: 15 * 60_000,
+  limit: 240,
+  standardHeaders: true,
+  legacyHeaders: false,
+  validate: { xForwardedForHeader: false }
+}));
 
 const lessonInput = z.object({ id: z.string().regex(/^[a-z0-9-]{3,80}$/), title: z.string().trim().min(3).max(120), module: z.string().trim().min(2).max(80), description: z.string().trim().min(10).max(500), level: z.enum(['تمهيدي', 'متوسط', 'متقدم']), duration: z.number().int().min(1).max(240), published: z.boolean(), questions: z.array(z.object({ prompt: z.string().trim().min(5).max(1000), options: z.array(z.string().trim().min(1).max(300)).min(2).max(6), answerIndex: z.number().int().min(0).max(5), explanation: z.string().trim().max(1500) })).min(1).max(200) });
 const attemptInput = z.object({ answers: z.array(z.object({ questionId: z.string().min(1).max(80), selectedIndex: z.number().int().min(0).max(7).nullable() })).min(1).max(200) });
