@@ -10,7 +10,16 @@ const adminEmail = (process.env.ADMIN_EMAIL || 'ma7moud01030382018@gmail.com').t
 let store;
 let firebaseInitError;
 try {
-  const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_JSON ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON) : null;
+  const rawCredentials = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+  const credentialText = rawCredentials?.startsWith('ey') ? Buffer.from(rawCredentials, 'base64').toString('utf8') : rawCredentials;
+  let serviceAccount;
+  if (credentialText) {
+    try { serviceAccount = JSON.parse(credentialText); }
+    catch {
+      const fixed = credentialText.replace(/("private_key"\s*:\s*")([\s\S]*?)(",\s*"client_email")/, (_, start, key, end) => start + key.replace(/\r?\n/g, '\\n') + end);
+      serviceAccount = JSON.parse(fixed);
+    }
+  }
   if (!getApps().length) initializeApp(serviceAccount ? { credential: cert(serviceAccount) } : undefined);
   store = getFirestore();
 } catch (error) {
