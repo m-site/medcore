@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1220"><meta name="description" content="Medcore — learning built around clinical thinking.">
+  <title>Medcore | تعلّم طبي أذكى</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="nav shell"><a class="brand" href="#top" aria-label="Medcore"><span class="brand-mark">✦</span><span>med<span>core</span></span></a><nav><a href="#library">المكتبة</a><a href="#method">المنهجية</a><button class="text-button" id="admin-open">دخول الإدارة</button></nav></header>
+  <main id="top">
+    <section class="hero shell"><div class="hero-copy"><p class="eyebrow">LEARN WITH INTENT</p><h1>مشوارك الطبي،<br><em>بتركيز أعمق.</em></h1><p class="lead">منصة مراجعة ذكية تضع السؤال الصحيح في الوقت المناسب، وتحوّل الخطأ إلى مسار واضح للتحسن.</p><div class="hero-actions"><a class="button primary" href="#library">ابدأ المراجعة <span>←</span></a><button class="button quiet" id="feedback-open">شاركنا رأيك</button></div><div class="proof"><div><b>01</b><span>سؤال في كل مرة</span></div><div><b>∞</b><span>مراجعة بلا تشتت</span></div><div><b>100%</b><span>مبني للموبايل</span></div></div></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="pulse-card"><span class="pulse-dot"></span><small>FOCUS MODE</small><strong>Clinical<br>thinking</strong><i>↗</i></div><div class="ring-text">MEDCORE · LEARN · PRACTISE · GROW · </div></div></section>
+    <section class="library shell" id="library"><div class="section-head"><div><p class="eyebrow">YOUR LIBRARY</p><h2>اختر نقطة البداية.</h2></div><div class="filter-wrap"><input id="search" type="search" placeholder="ابحث عن درس أو موديول" aria-label="البحث في الدروس"></div></div><div class="lesson-grid" id="lesson-grid" aria-live="polite"><div class="loading">نجهّز مكتبتك…</div></div></section>
+    <section class="method shell" id="method"><div class="method-title"><p class="eyebrow">THE MEDCORE WAY</p><h2>مراجعة تحترم<br>وقت عقلك.</h2></div><div class="method-list"><article><b>01</b><div><h3>ابدأ من القرار</h3><p>كل سؤال مرتبط بمنطق سريري، لا بحفظ معزول.</p></div></article><article><b>02</b><div><h3>اعرف لماذا</h3><p>تظهر التفسيرات في النهاية حتى تقيّم تفكيرك بصدق.</p></div></article><article><b>03</b><div><h3>ارجع أقوى</h3><p>حوّل أخطاءك إلى جلسة مراجعة مركّزة لاحقاً.</p></div></article></div></section>
+  </main>
+  <footer class="shell"><span class="brand small"><span class="brand-mark">✦</span>med<span>core</span></span><p>Built for the quiet work behind great care.</p><span>© <span id="year"></span> Medcore</span></footer>
+  <dialog id="quiz-dialog" class="panel quiz-panel"><button class="close" data-close="quiz-dialog" aria-label="إغلاق">×</button><div id="quiz-content"></div></dialog>
+  <dialog id="feedback-dialog" class="panel"><button class="close" data-close="feedback-dialog" aria-label="إغلاق">×</button><p class="eyebrow">MAKE IT BETTER</p><h2>رأيك يهمنا.</h2><form id="feedback-form"><textarea name="message" maxlength="1000" required placeholder="ما الذي يمكن أن نجعله أفضل؟"></textarea><button class="button primary">إرسال الرأي</button><p class="form-message" id="feedback-message"></p></form></dialog>
+  <dialog id="admin-dialog" class="panel admin-panel"><button class="close" data-close="admin-dialog" aria-label="إغلاق">×</button><div id="admin-content"><p class="eyebrow">ADMIN AREA</p><h2>إدارة Medcore</h2><form id="login-form"><label>البريد الإلكتروني<input name="email" type="email" autocomplete="email" required></label><label>كلمة المرور<input name="password" type="password" autocomplete="current-password" minlength="10" required></label><button class="button primary">دخول آمن</button><p class="form-message" id="login-message"></p></form></div></dialog>
+  <template id="lesson-template"><article class="lesson-card"><div class="lesson-meta"><span class="level"></span><span class="duration"></span></div><p class="module"></p><h3></h3><p class="description"></p><button class="lesson-start">ابدأ الجلسة <span>←</span></button></article></template>
+  <script type="module" src="/app.js"></script>
+</body></html>
