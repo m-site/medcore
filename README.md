@@ -20,7 +20,7 @@ Medcore is a full-stack Arabic medical-learning platform: a responsive student e
 
 ## Deployment
 
-This is not a GitHub Pages app: it needs a Node 20+ host and persistent disk or a managed database. Deploy the repository to Render, Railway, Fly.io, or a VPS; set the environment values from `.env.example`, use HTTPS, and mount persistent storage for `data/medcore.db`. For production scale, replace the SQLite adapter with PostgreSQL.
+This is not a GitHub Pages app: it needs Node 24+ and persistent disk or a managed database. Deploy the repository to Render, Railway, Fly.io, or a VPS; set the environment values from `.env.example`, use HTTPS, and mount persistent storage for `data/medcore.db`. A `Dockerfile` and `render.yaml` are included for a Render deployment. For production scale, replace the SQLite adapter with PostgreSQL.
 
 ## API
 

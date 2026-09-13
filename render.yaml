@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: medcore
+    runtime: docker
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: ma7moud01030382018@gmail.com
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CLIENT_ORIGIN
+        sync: false
